@@ -59,7 +59,7 @@ class App extends Component {
     }
     setTimeout(() => {
       this.setState({ picks: [] })
-    }, 3000)
+    }, 2000)
   }
 
   // For each card in faces:
@@ -71,7 +71,7 @@ class App extends Component {
     const picks = this.state.picks
     const matched = this.state.matched
     return <div>
-      <h1>{this.state.won ? 'YOU WIN' : 'MEMORY'}</h1>
+      <h1>{this.state.won ? 'YOU WIN' : 'Bill Memeory'}</h1>
       <section>
         <table>
           <tr>
@@ -86,6 +86,37 @@ class App extends Component {
             <BoxItem image={images[6]} isUp={picks.includes(6) || matched.includes(6)} handleClick={() => this.choose(6)} />
             <BoxItem image={images[7]} isUp={picks.includes(7) || matched.includes(7)} handleClick={() => this.choose(7)} />
           </tr>
+          <tr>
+            <BoxItem image={images[8]} isUp={picks.includes(8) || matched.includes(8)} handleClick={() => this.choose(8)} />
+            <BoxItem image={images[9]} isUp={picks.includes(9) || matched.includes(9)} handleClick={() => this.choose(9)} />
+            <BoxItem image={images[10]} isUp={picks.includes(10) || matched.includes(10)} handleClick={() => this.choose(10)} />
+            <BoxItem image={images[11]} isUp={picks.includes(11) || matched.includes(11)} handleClick={() => this.choose(11)} />
+          </tr>
+          <tr>
+            <BoxItem image={images[12]} isUp={picks.includes(12) || matched.includes(12)} handleClick={() => this.choose(12)} />
+            <BoxItem image={images[13]} isUp={picks.includes(13) || matched.includes(13)} handleClick={() => this.choose(13)} />
+            <BoxItem image={images[14]} isUp={picks.includes(14) || matched.includes(14)} handleClick={() => this.choose(14)} />
+            <BoxItem image={images[15]} isUp={picks.includes(15) || matched.includes(15)} handleClick={() => this.choose(15)} />
+          </tr>
+
+          {/* <tr>
+            <td className='down'><img src='http://img03.deviantart.net/002f/i/2012/147/9/7/vanilla_belle__s_cutie_mark_by_exkira-d519625.png' alt='purple Seashell' width='200px' /></td>
+            <td className='down'><img src='http://img03.deviantart.net/002f/i/2012/147/9/7/vanilla_belle__s_cutie_mark_by_exkira-d519625.png' alt='purple Seashell' width='200px' /></td>
+            <td className='up'><img src='' alt='purple Seashell' width='200px' /></td>
+            <td className='up'><img src='http://img03.deviantart.net/002f/i/2012/147/9/7/vanilla_belle__s_cutie_mark_by_exkira-d519625.png' alt='purple Seashell' width='200px' /></td>
+          </tr>
+          <tr>
+            <td className='down'><img src='' alt='pink starfish' width='200px' /></td>
+            <td className='down'><img src='https://s-media-cache-ak0.pinimg.com/originals/c9/56/73/c95673bb9e116447f43ff57e95a0a468.png' alt='pink starfish' width='200px' /></td>
+            <td className='up'><img src='https://s-media-cache-ak0.pinimg.com/originals/c9/56/73/c95673bb9e116447f43ff57e95a0a468.png' alt='pink starfish' width='200px' /></td>
+            <td className='up'><img src='https://s-media-cache-ak0.pinimg.com/originals/c9/56/73/c95673bb9e116447f43ff57e95a0a468.png' alt='pink starfish' width='200px' /></td>
+          </tr>
+          <tr>
+            <td className='down'><img src='' alt='coral starfish' width='200px' /></td>
+            <td className='down'><img src='http://www.clker.com/cliparts/q/e/k/7/q/C/coral-starfish-hi.png' alt='coral starfish' width='200px' /></td>
+            <td className='up'><img src='http://www.clker.com/cliparts/q/e/k/7/q/C/coral-starfish-hi.png' alt='coral starfish' width='200px' /></td>
+            <td className='up'><img src='http://www.clker.com/cliparts/q/e/k/7/q/C/coral-starfish-hi.png' alt='coral starfish' width='200px' /></td>
+          </tr> */}
         </table>
       </section>
     </div>
