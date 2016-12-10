@@ -40,6 +40,9 @@ const common = {
       test: /\.(png|jpe?g|gif|svg)$/,
       loader: 'file'
     }, {
+      test: /\.json$/,
+      loader: 'json'
+    }, {
       test: /\.(sass|s?css)$/,
       loaders: [
         'style',

@@ -1,0 +1,24 @@
+td.root {
+  height: 20vw;
+  width: 20vw;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #3e2811;
+  // border: solid 5px hsla(165, 100%, 48%, 1);
+  img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &.down {
+    img {
+      opacity: 0;
+    }
+  }
+
+  &.up {
+    //
+    img {
+      opacity: 1;
+    }
+  }
+}
