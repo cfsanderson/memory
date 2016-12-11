@@ -15,31 +15,17 @@ class App extends Component {
     }
   }
 
-  // choose(card) function:
-  //   If the number of picks is 2:
-  //     Do nothing (stop the player from choosing 3 cards).
-  //   Store card index in picks.
-  //   If the number of picks is now 2:
-  //     check()
   choose (card) {
     if (this.state.picks.length === 2 || this.state.matched.includes(card)) { return } // DO NOTHING, BAIL OUT
     this.setState({
       picks: [...this.state.picks, card]
     }, () => {
-      // Call back function that happens after
-      // React is done updating the state.
       if (this.state.picks.length === 2) {
         this.check()
       }
     })
   }
 
-  // check() function:
-  //   If picks[0] is equal to picks[1]:
-  //     Add the cards to matches.
-  //     If all matches found:
-  //       Game over.
-  //   Reset picks to [] after a short delay.
   check () {
     const picks = this.state.picks
     if (images[picks[0]] === images[picks[1]]) {
@@ -47,8 +33,6 @@ class App extends Component {
         matched: [...this.state.matched, ...picks],
         picks: []
       }, () => {
-        // Call back function that happens after
-        // React is done updating the state.
         if (this.state.matched.length === images.length) {
           // Show modal
           this.setState({
@@ -62,16 +46,11 @@ class App extends Component {
     }, 2000)
   }
 
-  // For each card in faces:
-  // If picks inclues card:
-  //   Show card face.
-  // Else:
-  //   Show card back.
   render () {
     const picks = this.state.picks
     const matched = this.state.matched
     return <div>
-      <h1>{this.state.won ? 'YOU WIN' : 'Bill Memeory'}</h1>
+      <h1>{this.state.won ? 'YOU WIN!!!' : 'Bill MEMEurray'}</h1>
       <section>
         <table>
           <tr>
@@ -98,25 +77,6 @@ class App extends Component {
             <BoxItem image={images[14]} isUp={picks.includes(14) || matched.includes(14)} handleClick={() => this.choose(14)} />
             <BoxItem image={images[15]} isUp={picks.includes(15) || matched.includes(15)} handleClick={() => this.choose(15)} />
           </tr>
-
-          {/* <tr>
-            <td className='down'><img src='http://img03.deviantart.net/002f/i/2012/147/9/7/vanilla_belle__s_cutie_mark_by_exkira-d519625.png' alt='purple Seashell' width='200px' /></td>
-            <td className='down'><img src='http://img03.deviantart.net/002f/i/2012/147/9/7/vanilla_belle__s_cutie_mark_by_exkira-d519625.png' alt='purple Seashell' width='200px' /></td>
-            <td className='up'><img src='' alt='purple Seashell' width='200px' /></td>
-            <td className='up'><img src='http://img03.deviantart.net/002f/i/2012/147/9/7/vanilla_belle__s_cutie_mark_by_exkira-d519625.png' alt='purple Seashell' width='200px' /></td>
-          </tr>
-          <tr>
-            <td className='down'><img src='' alt='pink starfish' width='200px' /></td>
-            <td className='down'><img src='https://s-media-cache-ak0.pinimg.com/originals/c9/56/73/c95673bb9e116447f43ff57e95a0a468.png' alt='pink starfish' width='200px' /></td>
-            <td className='up'><img src='https://s-media-cache-ak0.pinimg.com/originals/c9/56/73/c95673bb9e116447f43ff57e95a0a468.png' alt='pink starfish' width='200px' /></td>
-            <td className='up'><img src='https://s-media-cache-ak0.pinimg.com/originals/c9/56/73/c95673bb9e116447f43ff57e95a0a468.png' alt='pink starfish' width='200px' /></td>
-          </tr>
-          <tr>
-            <td className='down'><img src='' alt='coral starfish' width='200px' /></td>
-            <td className='down'><img src='http://www.clker.com/cliparts/q/e/k/7/q/C/coral-starfish-hi.png' alt='coral starfish' width='200px' /></td>
-            <td className='up'><img src='http://www.clker.com/cliparts/q/e/k/7/q/C/coral-starfish-hi.png' alt='coral starfish' width='200px' /></td>
-            <td className='up'><img src='http://www.clker.com/cliparts/q/e/k/7/q/C/coral-starfish-hi.png' alt='coral starfish' width='200px' /></td>
-          </tr> */}
         </table>
       </section>
     </div>
