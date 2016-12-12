@@ -25,7 +25,7 @@ class BoxItem extends Component {
       url given to it in App.js component in the App.js render section which would in turn set it to the given postiion in the array of images
       in the images.json file. */}
       <img src={this.props.image} />
-    {/* close the element */}
+      {/* close the element */}
     </td>
   }
 }
@@ -36,3 +36,4 @@ export default BoxItem
 /* Some questions, terms to define, and/or ways to talk about what is happening...
 - is this a "Potato"?
 -
+*/

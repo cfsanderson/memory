@@ -5,43 +5,53 @@ import styles from './App.scss'
 /* bring in the stylesheet from any other scss files that have to do with elements represented here */
 import BoxItem from './BoxItem'
 
-// bring in any images or files stored in a json file
+/* bring in any images or files stored in a json file. These will be stored as an array */
 import images from '../images.json'
 
-// start this component function
+/* start this component function */
 class App extends Component {
 
-  // set the initial state of the app using this function
+  /* set the initial state of the app using this function */
   constructor () {
-    // set the hierarchy of this initial state to it's superior
+    /* set the hierarchy of this initial state to it's superior */
     super()
-    // explicitly say what the initial state of the app should be with this initial function
+    /* explicitly say what the initial state of the app should be with this initial function using this.state  */
     this.state = {
-      // use keys and set their initial values (3x)
+      /* use keys and set their initial values; matched, picks, and won */
       matched: [],
       picks: [],
       won: false
     }
   }
-  // this function sets what happens when the cards are chosen
+
+  /* this function sets what happens when the cards are chosen */
   choose (card) {
     /* an if statement that says "if the 'picks length state' is 2
-    OR the 'matched state' includes the original card
-    then return/bail out of the function" */
+    OR the 'matched state' includes the original card,
+    then return/bail out of the function". This works because 'picks' is an array set in the this.setState function
+    below that includes the current selected card. We run this if statement check BEFORE we setState b/c otherwise the
+    player could choose the same card 2x. */
     if (this.state.picks.length === 2 || this.state.matched.includes(card)) { return }
-    /* at this point, if the above if test failed,
-    then set the state to what is in the current picks array */
+    /* set the state to whatever was in the current 'picks' array and add the new card to it. If only one card has been
+    selected then it the following if statement will fail. If it is the second card picked, then the this.check function will run. */
     this.setState({
+      /* set a key of picks to the array described above - 'this.state.picks' AND 'card' */
       picks: [...this.state.picks, card]
+      /* close this function and start a new one with another if statement */
     }, () => {
+      /* if statement that checks the length of this.state.picks to see if it is equal to 2 */
       if (this.state.picks.length === 2) {
+        /* if it is equal to 2, run the check function */
         this.check()
       }
     })
   }
 
+  /* Set up a check function to see if the player has chosen 2 of the same cards */
   check () {
+    /* set a constant 'potato' to this.state.picks */
     const picks = this.state.picks
+    /* Make an if statement that checks to see if the new array created by this.state.picks */
     if (images[picks[0]] === images[picks[1]]) {
       this.setState({
         matched: [...this.state.matched, ...picks],
@@ -115,3 +125,6 @@ class App extends Component {
 
 // export this component
 export default App
+/* Questions to ask...
+- explain the ... syntax in the array
+*/
